@@ -11,8 +11,8 @@ export default {
     host: process.env.HOST || '0.0.0.0',
   },
   head: {
-    titleTemplate: '%s - jp-final',
-    title: 'jp-final',
+    titleTemplate: '%s - EMS',
+    title: 'EMS',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },

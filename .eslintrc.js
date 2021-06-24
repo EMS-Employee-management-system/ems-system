@@ -12,8 +12,13 @@ module.exports = {
     'plugin:nuxt/recommended',
   ],
   plugins: ['prettier'],
-  // add your custom rules here
   rules: {
-    "prettier/prettier": "error"
+    'no-console': ['error', { allow: ['warn', 'info'] }],
+    'import/order': 'off',
+    'object-shorthand': 'warn',
+    'vue/valid-v-on': 'warn',
+    'vue/valid-v-slot': 0,
+    'vue/singleline-html-element-content-newline': 0,
+    'vue/html-self-closing': 0,
   },
 }
