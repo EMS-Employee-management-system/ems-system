@@ -1,5 +1,5 @@
 import colors from 'vuetify/es5/util/colors'
-import config from './configs'
+import config, { build } from './configs'
 const { auth, axios } = config
 
 export default {
@@ -89,7 +89,7 @@ export default {
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
-  build: {},
+  build,
   auth,
   axios,
   router: {

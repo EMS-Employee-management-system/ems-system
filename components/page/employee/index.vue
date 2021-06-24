@@ -70,7 +70,7 @@
 </template>
 <script lang="ts">
 import Vue from 'vue'
-import { Component, Emit, Prop } from 'nuxt-property-decorator'
+import { Component, Emit, Prop, VModel } from 'nuxt-property-decorator'
 import ValidationMixins from '~/mixins/validations'
 interface ICardProps {
   width?: string | number
@@ -81,6 +81,7 @@ interface ICardProps {
   name: 'employee-info',
 })
 export default class EmployeeInfo extends Vue {
+  @VModel({ type: Object }) baseForm!: {}
   @Prop(String) cancelText!: string
   @Prop(String) title!: string
   @Prop(String) actionText!: string
@@ -96,11 +97,8 @@ export default class EmployeeInfo extends Vue {
     return this.cardProps.maxWidth || this.cardProps.width
   }
 
-  baseForm = {}
-
   submit(this: any) {
     if (this.$refs.baseForm.validate()) {
-      console.info(this.baseForm)
       this.$emit('submit', this.baseForm)
     }
   }
