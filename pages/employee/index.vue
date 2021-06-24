@@ -1,6 +1,9 @@
 <template>
   <v-sheet>
-    <div class="pa-3 display-1">Employee list</div>
+    <div class="pa-3 display-1">
+      Employee list
+      <v-btn class="float-right mr-1" @click="addNewEmployee">add new</v-btn>
+    </div>
     <v-card-text>
       <v-data-table
         :headers="headers"
@@ -84,6 +87,12 @@ export default Vue.extend({
   methods: {
     deleteItem(this: any) {
       this.dialog = true
+    },
+    addNewEmployee(this: any) {
+      const localePath = this.localePath({
+        name: 'employee-register',
+      })
+      return this.$router.push(localePath)
     },
   },
 })
