@@ -43,7 +43,7 @@ export default {
 
   // Modules (https://go.nuxtjs.dev/config-modules)
 
-  modules: ['@nuxtjs/axios', '@nuxtjs/auth-next', 'nuxt-i18n'],
+  modules: ['@nuxtjs/axios', '@nuxtjs/auth-next', 'nuxt-i18n', 'vue-waiting/nuxt'],
   i18n: {
     locales: ['en', 'ja'],
     defaultLocale: 'en',
