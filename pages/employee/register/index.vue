@@ -20,11 +20,11 @@ export default Vue.extend({
 
   methods: {
     cancel(this: any) {
-     const path = this.localePath({
+      const path = this.localePath({
         name: 'employee',
       })
       return this.$router.push(path)
-    }
-  }
+    },
+  },
 })
 </script>

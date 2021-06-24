@@ -53,8 +53,14 @@
             </v-btn>
           </v-col>
           <v-col cols="6" class="pl-1">
-            <v-btn color="primary" @click="submit" :loading="loading" block class="mb-3">
-            {{ actionText }}
+            <v-btn
+              color="primary"
+              :loading="loading"
+              block
+              class="mb-3"
+              @click="submit"
+            >
+              {{ actionText }}
             </v-btn>
           </v-col>
         </v-row>
@@ -93,7 +99,7 @@ export default class EmployeeInfo extends Vue {
   baseForm = {}
 
   submit(this: any) {
-    if(this.$refs.baseForm.validate()) {
+    if (this.$refs.baseForm.validate()) {
       console.info(this.baseForm)
       this.$emit('submit', this.baseForm)
     }
@@ -101,6 +107,5 @@ export default class EmployeeInfo extends Vue {
 
   @Emit()
   cancel() {}
-
 }
 </script>
