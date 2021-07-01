@@ -1,0 +1,6 @@
+API_URL=http://localhost:8080
+API_PREFIX=/api
+API_KEY=appjK8pdELTQfz6mQNsHIpyvprf3Q9Dc9a1
+PROXY=true
+PORT=5050
+HOST=localhost
