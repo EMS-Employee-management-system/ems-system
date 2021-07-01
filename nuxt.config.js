@@ -1,9 +1,8 @@
 import colors from 'vuetify/es5/util/colors'
 import config, { build } from './configs'
-const { auth, axios } = config
+const { auth, axios, proxy } = config
 
 export default {
-  // Global page headers (https://go.nuxtjs.dev/config-head)
   ssr: false,
   target: 'static',
   server: {
@@ -20,30 +19,20 @@ export default {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
-
-  // Global CSS (https://go.nuxtjs.dev/config-css)
-  // css: ['~/assets/theme.scss'],
   css: ['~/assets/scss/theme.scss'],
-
-  // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [{ src: '~/plugins/axios' }],
-
-  // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
-
-  // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
-    // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
-    // https://go.nuxtjs.dev/stylelint
     '@nuxtjs/stylelint-module',
-    // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
   ],
-
-  // Modules (https://go.nuxtjs.dev/config-modules)
-
-  modules: ['@nuxtjs/axios', '@nuxtjs/auth-next', 'nuxt-i18n', 'vue-waiting/nuxt'],
+  modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/auth-next',
+    'nuxt-i18n',
+    'vue-waiting/nuxt',
+  ],
   i18n: {
     locales: ['en', 'ja'],
     defaultLocale: 'en',
@@ -68,8 +57,6 @@ export default {
   publicRuntimeConfig: {
     apiKey: process.env.API_KEY,
   },
-
-  // Vuetify module configuration (https://go.nuxtjs.dev/config-vuetify)
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     theme: {
@@ -87,11 +74,10 @@ export default {
       },
     },
   },
-
-  // Build Configuration (https://go.nuxtjs.dev/config-build)
   build,
   auth,
   axios,
+  proxy,
   router: {
     middleware: ['auth'],
   },

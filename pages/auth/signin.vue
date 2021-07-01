@@ -5,11 +5,11 @@
     <v-form ref="loginForm" class="pa-5" @keyup.native.enter="login">
       <v-card-text>
         <v-text-field
-          v-model="login.email"
-          label="Email"
-          :rules="[required('Email'), isEmail('Email')]"
+          v-model="login.username"
+          label="Username"
+          :rules="[required('Username')]"
           outlined
-          placeholder="Email"
+          placeholder="Username"
           dense
         ></v-text-field>
         <v-text-field
@@ -65,8 +65,13 @@ export default Vue.extend({
     }
   },
   methods: {
-    userLogin(this: any) {
-      if (this.$refs.loginForm.validate()) {
+    async userLogin(this: any) {
+      try {
+        if (this.$refs.loginForm.validate()) {
+          await this.$auth.loginWith('local', { data: this.login })
+        }
+      } catch (e) {
+        console.info(e)
       }
     },
     register(this: any) {

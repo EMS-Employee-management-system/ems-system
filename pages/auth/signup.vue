@@ -5,7 +5,7 @@
     <v-form ref="loginForm" class="pa-5" @keyup.native.enter="login">
       <v-card-text>
         <v-text-field
-          v-model="register.first_name"
+          v-model="register.firstName"
           label="First name"
           placeholder="First name"
           dense
@@ -13,7 +13,7 @@
           :rules="[required('First name')]"
         />
         <v-text-field
-          v-model="register.last_name"
+          v-model="register.lastLame"
           label="Last name"
           placeholder="Last name"
           dense
@@ -82,8 +82,13 @@ export default Vue.extend({
     }
   },
   methods: {
-    submit(this: any) {
-      if (this.$refs.loginForm.validate()) {
+    async submit(this: any) {
+      try {
+        if (this.$refs.loginForm.validate()) {
+          await this.$auth.loginWith()
+        }
+      } catch (e) {
+        console.info(e)
       }
     },
   },

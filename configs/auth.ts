@@ -1,23 +1,29 @@
 export default {
-  auth: {
-    strategies: {
-      local: {
-        token: {
-          property: 'token',
-          global: true,
-          required: true,
-          type: 'Bearer',
-        },
-        user: {
-          property: 'user',
-          autoFetch: true,
-        },
-        endpoints: {
-          login: { url: '/api/auth/login', method: 'post' },
-          logout: { url: '/api/auth/logout', method: 'post' },
-          user: { url: '/api/auth/user', method: 'get' },
-        },
+  strategies: {
+    local: {
+      token: {
+        property: 'token.accessToken',
+      },
+      user: {
+        property: '',
+      },
+      endpoints: {
+        login: { url: '/auth/signin', method: 'post' },
+        logout: { url: '/auth/logout', method: 'post' },
+        // user: { url: '/profile', method: 'get' },
       },
     },
   },
+  redirect: {
+    login: '/auth/signin',
+    logout: '/auth/signin',
+    callback: '/auth/signin',
+    home: false,
+  },
+  rewriteRedirects: true,
+  // scopeKey: 'role',
+  // plugins: [{ src: '~/plugins/axios', ssr: true }],
+  // plugins: [
+  //   { src: '~/plugins/auth-redirect'},
+  // ]
 }
