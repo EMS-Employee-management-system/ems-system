@@ -61,7 +61,7 @@ import ValidationMixins from '~/mixins/validations'
 export default Vue.extend({
   layout: 'auth',
   name: 'Register',
-  auth: false,
+  middleware: 'guest',
   mixins: [ValidationMixins],
   data() {
     return {

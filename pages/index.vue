@@ -7,6 +7,5 @@
 import Vue from 'vue'
 export default Vue.extend({
   layout: 'default',
-  auth: false,
 })
 </script>

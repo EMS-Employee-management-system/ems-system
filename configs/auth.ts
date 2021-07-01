@@ -2,15 +2,15 @@ export default {
   strategies: {
     local: {
       token: {
-        property: 'token.accessToken',
+        property: 'accessToken',
       },
       user: {
         property: '',
       },
       endpoints: {
-        login: { url: '/auth/signin', method: 'post' },
+        login: { url: '/api/auth/signin', method: 'post' },
         logout: { url: '/auth/logout', method: 'post' },
-        // user: { url: '/profile', method: 'get' },
+        user: { url: '/api/auth/user', method: 'get' },
       },
     },
   },

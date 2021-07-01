@@ -40,7 +40,6 @@ import Vue from 'vue'
 export default Vue.extend({
   layout: 'default',
   name: 'EmployeeList',
-  auth: false,
   data() {
     return {
       dialog: false,

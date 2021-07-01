@@ -47,6 +47,7 @@ import ValidationMixins from '~/mixins/validations'
 export default Vue.extend({
   layout: 'auth',
   name: 'LoginPage',
+  middleware: 'guest',
   mixins: [ValidationMixins],
   data() {
     return {
@@ -69,6 +70,7 @@ export default Vue.extend({
       try {
         if (this.$refs.loginForm.validate()) {
           await this.$auth.loginWith('local', { data: this.login })
+          return this.$router.push(this.localePath({ name: '/' }))
         }
       } catch (e) {
         console.info(e)

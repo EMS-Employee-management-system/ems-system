@@ -1,6 +1,7 @@
 <template>
   <v-sheet>
     <page-employee
+      v-model="customerForm"
       title="Register new customer"
       action-text="submit"
       cancel-text="Cancel"
@@ -11,13 +12,14 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import ValidationMixins from '~/mixins/validations'
 export default Vue.extend({
   layout: 'default',
   name: 'Register',
-  auth: false,
-  mixins: [ValidationMixins],
-
+  data() {
+    return {
+      customerForm: {},
+    }
+  },
   methods: {
     cancel(this: any) {
       const path = this.localePath({
