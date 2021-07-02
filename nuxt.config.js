@@ -28,6 +28,7 @@ export default {
     '@nuxtjs/vuetify',
   ],
   modules: [
+    'vue-api-queries/nuxt',
     '@nuxtjs/axios',
     '@nuxtjs/auth-next',
     'nuxt-i18n',
