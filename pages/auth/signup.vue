@@ -5,20 +5,12 @@
     <v-form ref="loginForm" class="pa-5" @keyup.native.enter="login">
       <v-card-text>
         <v-text-field
-          v-model="register.firstName"
-          label="First name"
-          placeholder="First name"
+          v-model="register.username"
+          label="Username"
+          placeholder="Username"
           dense
           outlined
-          :rules="[required('First name')]"
-        />
-        <v-text-field
-          v-model="register.lastLame"
-          label="Last name"
-          placeholder="Last name"
-          dense
-          outlined
-          :rules="[required('Last name')]"
+          :rules="[required('Username')]"
         />
         <v-text-field
           v-model="register.email"
@@ -49,9 +41,7 @@
         >
           REGISTER
         </v-btn>
-        <nuxt-link :to="localePath('auth/signin')">
-          Back to login? Login
-        </nuxt-link>
+        <nuxt-link :to="localePath('login')"> Back to login? Login </nuxt-link>
       </v-card-text>
     </v-form>
   </v-card>
@@ -70,8 +60,7 @@ export default Vue.extend({
       register: {
         username: '',
         password: '',
-        first_name: '',
-        last_name: '',
+        email: '',
       },
       hidePassword: true,
       dialog: true,
@@ -87,7 +76,7 @@ export default Vue.extend({
     async submit(this: any) {
       try {
         if (this.$refs.loginForm.validate()) {
-          await this.$auth.loginWith()
+          await this.$store.dispatch('user/signup', this.register)
         }
       } catch (e) {
         console.info(e)
