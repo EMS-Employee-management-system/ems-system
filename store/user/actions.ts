@@ -9,7 +9,7 @@ const signup = async (
 ): Promise<any> => {
   await dispatch('waiting/start', 'user:signup', options)
   try {
-    await proxy.removeParameters().post(payload)
+    await proxy.removeParameters().singup(payload)
     const path = window.$nuxt.localePath({
       name: 'auth-signin',
     })
