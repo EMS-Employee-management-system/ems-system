@@ -49,7 +49,9 @@
         >
           REGISTER
         </v-btn>
-        <nuxt-link :to="localePath('login')"> Back to login? Login </nuxt-link>
+        <nuxt-link :to="localePath('auth/signin')">
+          Back to login? Login
+        </nuxt-link>
       </v-card-text>
     </v-form>
   </v-card>
@@ -61,7 +63,7 @@ import ValidationMixins from '~/mixins/validations'
 export default Vue.extend({
   layout: 'auth',
   name: 'Register',
-  middleware: 'guest',
+  auth: false,
   mixins: [ValidationMixins],
   data() {
     return {

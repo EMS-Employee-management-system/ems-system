@@ -33,7 +33,7 @@
         >
           LOGIN
         </v-btn>
-        <nuxt-link :to="localePath('/register')">
+        <nuxt-link :to="localePath('/auth/signup')">
           Don't have an account? Sign Up
         </nuxt-link>
       </v-card-text>
