@@ -21,9 +21,4 @@ export default {
     home: false,
   },
   rewriteRedirects: true,
-  // scopeKey: 'role',
-  // plugins: [{ src: '~/plugins/axios', ssr: true }],
-  // plugins: [
-  //   { src: '~/plugins/auth-redirect'},
-  // ]
 }
