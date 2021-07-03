@@ -30,7 +30,7 @@ const register = async (
 ): Promise<any> => {
   await dispatch('waiting/start', 'employee:register', options)
   try {
-    await proxy.post(payload)
+    await proxy.removeParameters().post(payload)
     const path = window.$nuxt.localePath({
       name: 'employee',
     })
@@ -48,7 +48,7 @@ const update = async (
   await dispatch('waiting/start', 'employee:update', options)
   const { id } = payload
   try {
-    await proxy.put(id, payload)
+    await proxy.removeParameters().put(id, payload)
     const path = window.$nuxt.localePath({
       name: 'employee',
     })
@@ -61,10 +61,21 @@ const update = async (
 
 const detail = async ({ commit }: Store<any>, id: number) => {
   try {
-    const data = await proxy.find(id)
+    const data = await proxy.removeParameters().find(id)
     commit(DETAIL, data)
   } catch (e) {
     console.info(e)
   }
 }
-export default { all, register, update, detail }
+
+const deleteEmployee = async ({ dispatch }: Store<any>, id: number) => {
+  await dispatch('waiting/start', 'employee:update', options)
+  try {
+    await proxy.removeParameters().delete(id)
+  } catch (e) {
+    console.info(e)
+  } finally {
+    await dispatch('waiting/end', 'employee:update', options)
+  }
+}
+export default { all, register, update, detail, deleteEmployee }

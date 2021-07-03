@@ -36,6 +36,7 @@
       :dialog-props="{ width: 500 }"
       cancel-text="Cancel"
       action-text="Delete"
+      @commit="handleDelete"
     >
       <v-card-text>
         <v-span>Are you sure want to delete employee?</v-span>
@@ -47,6 +48,7 @@
 import Vue from 'vue'
 import DataTable from '~/mixins/data-table'
 import { BaseProxy } from 'vue-api-queries'
+import { ObjectType } from '~/utils/objects'
 export default Vue.extend({
   layout: 'default',
   name: 'EmployeeList',
@@ -71,6 +73,7 @@ export default Vue.extend({
       options: {
         mustSort: true,
       },
+      id: null,
     }
   },
   computed: {
@@ -108,7 +111,8 @@ export default Vue.extend({
         },
       })
     },
-    deleteItem(this: any) {
+    deleteItem(this: any, { id }: ObjectType) {
+      this.id = id
       this.dialog = true
     },
     addNewEmployee(this: any) {
@@ -123,6 +127,11 @@ export default Vue.extend({
         params: { id },
       })
       return this.$router.push(localePath)
+    },
+    async handleDelete(this: any) {
+      await this.$store.dispatch('employee/deleteEmployee', this.id)
+      await this.getCustomer()
+      this.dialog = false
     },
   },
 })
