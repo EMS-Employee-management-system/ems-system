@@ -117,7 +117,13 @@ export default Vue.extend({
       })
       return this.$router.push(localePath)
     },
-    editItem() {},
+    editItem({ id }) {
+      const localePath = this.localePath({
+        name: `employee-id`,
+        params: { id },
+      })
+      return this.$router.push(localePath)
+    },
   },
 })
 </script>
