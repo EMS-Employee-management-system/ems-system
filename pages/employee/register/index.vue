@@ -1,11 +1,12 @@
 <template>
   <v-sheet>
     <page-employee
-      v-model="customerForm"
+      v-model="employeeForm"
       title="Register new customer"
       action-text="submit"
       cancel-text="Cancel"
       @cancel="cancel"
+      @submit="register"
     />
   </v-sheet>
 </template>
@@ -17,7 +18,7 @@ export default Vue.extend({
   name: 'Register',
   data() {
     return {
-      customerForm: {},
+      employeeForm: {},
     }
   },
   methods: {
@@ -26,6 +27,9 @@ export default Vue.extend({
         name: 'employee',
       })
       return this.$router.push(path)
+    },
+    register(this: any) {
+      this.$store.dispatch('employee/register', this.employeeForm)
     },
   },
 })

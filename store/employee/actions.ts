@@ -32,7 +32,7 @@ const register = async (
   try {
     await proxy.post(payload)
     const path = window.$nuxt.localePath({
-      name: 'employees',
+      name: 'employee',
     })
     return window.$nuxt.$router.push(path)
   } catch (error) {
