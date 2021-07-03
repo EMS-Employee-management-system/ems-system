@@ -20,6 +20,15 @@
           :rules="[required('Last name')]"
           dense
         />
+        <v-select
+          v-model="baseForm.gender"
+          :items="['Male', 'Female']"
+          :rules="[required('Gender')]"
+          label="Gender"
+          outlined
+          dense
+          placeholder="Position"
+        />
         <v-text-field
           v-model="baseForm.position"
           label="Position"

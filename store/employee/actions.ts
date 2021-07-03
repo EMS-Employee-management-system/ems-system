@@ -1,5 +1,6 @@
 import type { Store } from 'vuex'
 import { EmployeeProxy } from '~/proxies/EmployeeProxy'
+import { ObjectType } from '~/utils/objects'
 import { ALL } from '~/utils/vuex/mutation-types'
 const options = { root: true }
 const proxy = new EmployeeProxy()
@@ -22,4 +23,21 @@ const all = async ({ commit, dispatch }: Store<any>, param: any) => {
     await dispatch('waiting/end', 'customer:fetch', options)
   }
 }
-export default { all }
+
+const register = async (
+  { dispatch }: Store<any>,
+  payload: ObjectType,
+): Promise<any> => {
+  await dispatch('waiting/start', 'employee:register', options)
+  try {
+    await proxy.post(payload)
+    const path = window.$nuxt.localePath({
+      name: 'employees',
+    })
+    return window.$nuxt.$router.push(path)
+  } catch (error) {
+  } finally {
+    await dispatch('waiting/end', 'employee:register', options)
+  }
+}
+export default { all, register }
