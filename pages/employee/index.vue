@@ -39,7 +39,7 @@
       @commit="handleDelete"
     >
       <v-card-text>
-        <v-span>Are you sure want to delete employee?</v-span>
+        <span>Are you sure want to delete employee?</span>
       </v-card-text>
     </common-dialog>
   </v-sheet>
