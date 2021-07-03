@@ -8,12 +8,17 @@
       <v-data-table
         :headers="headers"
         :items="employees"
+        :server-items-length="pagination.total"
         class="elevation-6 rounded-0"
         :sort-desc="[false, true]"
         multi-sort
         height="calc(100vh - 280px)"
         fixed-header
+        :footer-props="tableFooter"
         disable-pagination
+        :page="page"
+        :options.sync="options"
+        :items-per-page="limit"
       >
         <template #[`item.action`]="{ item }">
           <v-icon small class="mr-2" @click="editItem(item)">
@@ -40,10 +45,12 @@
 </template>
 <script lang="ts">
 import Vue from 'vue'
+import DataTable from '~/mixins/data-table'
 import { BaseProxy } from 'vue-api-queries'
 export default Vue.extend({
   layout: 'default',
   name: 'EmployeeList',
+  mixins: [DataTable],
   data() {
     return {
       dialog: false,
@@ -61,11 +68,30 @@ export default Vue.extend({
       ],
       limit: 20,
       page: 1,
+      options: {
+        mustSort: true,
+      },
     }
   },
   computed: {
     employees(this: any) {
       return this.$store.getters['employee/all']
+    },
+    pagination(this: any) {
+      return this.$store.getters['employee/pagination']
+    },
+  },
+  watch: {
+    options: {
+      handler(this: any, options) {
+        const { page, itemsPerPage, sortBy = [] } = options
+        if (this.limit === itemsPerPage && page === this.page && !sortBy[0])
+          return
+        this.limit = itemsPerPage
+        this.page = page
+        this.getCustomer()
+      },
+      deep: true,
     },
   },
   mounted(this: any) {

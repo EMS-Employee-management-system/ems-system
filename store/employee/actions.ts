@@ -10,10 +10,10 @@ const all = async ({ commit, dispatch }: Store<any>, param: any) => {
   }
   await dispatch('waiting/start', 'customer:fetch', options)
   try {
-    const { content, count, totalElements, pageCount } = await proxy.all()
+    const { content, number, totalElements, pageCount } = await proxy.all()
     const items = {
       items: content,
-      pagination: { count, total: totalElements, pageCount },
+      pagination: { page: number + 1, total: totalElements, pageCount },
     }
     commit(ALL, items)
   } catch (e) {
