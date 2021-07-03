@@ -1,6 +1,6 @@
 <template>
   <v-row class="display-1 mb-2 mt-5" justify="center" align="center">
-    Wellcome to Employee management system
+    Welcome to Employee management system
   </v-row>
 </template>
 <script lang="ts">

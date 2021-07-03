@@ -7,10 +7,13 @@
     <v-card-text>
       <v-data-table
         :headers="headers"
-        :items="desserts"
+        :items="employees"
+        class="elevation-6 rounded-0"
         :sort-desc="[false, true]"
         multi-sort
-        class="elevation-1"
+        height="calc(100vh - 280px)"
+        fixed-header
+        disable-pagination
       >
         <template #[`item.action`]="{ item }">
           <v-icon small class="mr-2" @click="editItem(item)">
@@ -37,6 +40,7 @@
 </template>
 <script lang="ts">
 import Vue from 'vue'
+import { BaseProxy } from 'vue-api-queries'
 export default Vue.extend({
   layout: 'default',
   name: 'EmployeeList',
@@ -55,35 +59,29 @@ export default Vue.extend({
         { text: 'Phone', value: 'phone' },
         { text: 'action', value: 'action' },
       ],
-      desserts: [
-        {
-          firstName: 'Virak',
-          lastName: 'Ran',
-          position: 'Security',
-          province: 'Pursat',
-          gender: 'Male',
-          phone: '099393709',
-        },
-        {
-          firstName: 'Chanlly',
-          lastName: 'Touch',
-          position: 'Tester',
-          province: 'Kompong charm',
-          gender: 'Female',
-          phone: '09384724',
-        },
-        {
-          firstName: 'Makara',
-          lastName: 'Due',
-          position: 'Dev',
-          province: 'Rathanakiry',
-          gender: 'Male',
-          phone: '093754833',
-        },
-      ],
+      limit: 20,
+      page: 1,
     }
   },
+  computed: {
+    employees(this: any) {
+      return this.$store.getters['employee/all']
+    },
+  },
+  mounted(this: any) {
+    this.getCustomer()
+  },
   methods: {
+    async getCustomer(this: any) {
+      await this.$store.dispatch('employee/all', {
+        fn: (proxy: BaseProxy) => {
+          proxy.removeParameters().setParameters({
+            limit: this.limit,
+            page: this.page,
+          })
+        },
+      })
+    },
     deleteItem(this: any) {
       this.dialog = true
     },
@@ -93,6 +91,7 @@ export default Vue.extend({
       })
       return this.$router.push(localePath)
     },
+    editItem() {},
   },
 })
 </script>
