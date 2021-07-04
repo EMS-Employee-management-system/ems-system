@@ -41,4 +41,14 @@ const signup = async (
     await dispatch('waiting/end', 'user:signup', options)
   }
 }
-export default { signup, all }
+const deleteUser = async ({ dispatch }: Store<any>, id: number) => {
+  await dispatch('waiting/start', 'user:delete', options)
+  try {
+    await proxy.removeParameters().deleteOne(id)
+  } catch (e) {
+    console.info(e)
+  } finally {
+    await dispatch('waiting/end', 'user:delete', options)
+  }
+}
+export default { signup, all, deleteUser }

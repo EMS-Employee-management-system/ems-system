@@ -122,7 +122,7 @@ export default Vue.extend({
       this.dialog = true
     },
     async handleDelete(this: any) {
-      await this.$store.dispatch('employee/deleteEmployee', this.id)
+      await this.$store.dispatch('user/deleteUser', this.id)
       await this.getUsers()
       this.dialog = false
     },

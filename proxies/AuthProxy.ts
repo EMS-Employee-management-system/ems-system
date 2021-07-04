@@ -13,5 +13,9 @@ export class AuthProxy extends BaseProxy {
   getAll() {
     return this.submit('get', `api/auth/users`)
   }
+
+  deleteOne(id: number) {
+    return this.submit('delete', `api/auth/users/${id}`)
+  }
 }
 export default { AuthProxy }
