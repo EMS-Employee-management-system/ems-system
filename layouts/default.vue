@@ -67,6 +67,11 @@ export default Vue.extend({
           to: '/',
         },
         {
+          icon: 'mdi-account',
+          title: 'users',
+          to: '/users',
+        },
+        {
           icon: 'mdi-account-multiple',
           title: 'Employee',
           to: '/employee',
