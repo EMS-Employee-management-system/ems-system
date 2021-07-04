@@ -71,6 +71,11 @@ export default Vue.extend({
           title: 'Employee',
           to: '/employee',
         },
+        {
+          icon: 'mdi-domain',
+          title: 'Department',
+          to: '/department',
+        },
       ],
       miniVariant: false,
       right: true,

@@ -59,6 +59,7 @@ export default Vue.extend({
         {
           text: 'First name',
           value: 'firstName',
+          sortable: false,
         },
         { text: 'Last name', value: 'lastName', sortable: false },
         { text: 'Position', value: 'position', sortable: false },
