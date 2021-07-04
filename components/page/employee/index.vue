@@ -1,7 +1,10 @@
 <template>
   <v-card class="mx-auto" max-width="600" outlined>
     <v-form ref="baseForm" class="pa-5" @keyup.native.enter="baseForm">
-      <v-card-title class="justify-center">{{ title }}</v-card-title>
+      <v-card-title class="justify-center"
+        ><v-icon @click="cancel">mdi-arrow-left</v-icon
+        >{{ title }}</v-card-title
+      >
       <v-divider />
       <v-card-text>
         <v-text-field
@@ -11,6 +14,7 @@
           placeholder="First name"
           :rules="[required('First name')]"
           dense
+          :readonly="disabled"
         />
         <v-text-field
           v-model="baseForm.lastName"
@@ -19,6 +23,7 @@
           placeholder="Last name"
           :rules="[required('Last name')]"
           dense
+          :readonly="disabled"
         />
         <v-select
           v-model="baseForm.gender"
@@ -28,6 +33,7 @@
           outlined
           dense
           placeholder="Position"
+          :readonly="disabled"
         />
         <v-text-field
           v-model="baseForm.position"
@@ -36,6 +42,7 @@
           outlined
           placeholder="Position"
           dense
+          :readonly="disabled"
         />
         <v-text-field
           v-model="baseForm.province"
@@ -44,6 +51,7 @@
           outlined
           placeholder="Province"
           dense
+          :readonly="disabled"
         />
         <v-text-field
           v-model="baseForm.phone"
@@ -52,9 +60,10 @@
           outlined
           placeholder="Phone"
           dense
+          :readonly="disabled"
         />
       </v-card-text>
-      <v-card-actions>
+      <v-card-actions v-if="!hiddenFooter">
         <v-row no-gutters>
           <v-col cols="6" class="pr-1">
             <v-btn color="secondary" block class="mb-3" @click="cancel">
@@ -96,6 +105,7 @@ export default class EmployeeInfo extends Vue {
   @Prop(String) actionText!: string
   @Prop(Boolean) loading!: boolean
   @Prop(Boolean) disabled!: boolean
+  @Prop({ type: Boolean, default: false }) hiddenFooter!: boolean
   cardProps!: ICardProps
 
   get width() {
