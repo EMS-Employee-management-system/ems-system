@@ -5,8 +5,6 @@
       title="Update employee"
       action-text="update"
       cancel-text="Cancel"
-      disabled
-      hidden-footer
       @cancel="cancel"
       @submit="update"
     />
@@ -16,11 +14,9 @@
 <script lang="ts">
 import { cloneDeep } from 'lodash'
 import Vue from 'vue'
-import Permission from '~/mixins/permission'
 export default Vue.extend({
   layout: 'default',
   name: 'Register',
-  mixins: [Permission],
   data() {
     return {
       employeeForm: {},

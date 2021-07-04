@@ -21,9 +21,9 @@
       >
         <template #[`item.action`]="{ item }">
           <v-icon small class="mr-2" @click="editItem(item)">
-            {{ isAdmin() ? 'mdi-pencil' : 'mdi-eye-circle' }}
+            mdi-pencil
           </v-icon>
-          <v-icon v-if="isAdmin()" color="red" small @click="deleteItem(item)">
+          <v-icon color="red" small @click="deleteItem(item)">
             mdi-delete
           </v-icon>
         </template>
@@ -48,11 +48,10 @@ import Vue from 'vue'
 import DataTable from '~/mixins/data-table'
 import { BaseProxy } from 'vue-api-queries'
 import { ObjectType } from '~/utils/objects'
-import Permission from '~/mixins/permission'
 export default Vue.extend({
   layout: 'default',
   name: 'EmployeeList',
-  mixins: [DataTable, Permission],
+  mixins: [DataTable],
   data() {
     return {
       dialog: false,
