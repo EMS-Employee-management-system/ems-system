@@ -11,7 +11,6 @@
         :server-items-length="pagination.total"
         class="elevation-6 rounded-0"
         :sort-desc="[false, true]"
-        multi-sort
         height="calc(100vh - 280px)"
         fixed-header
         :footer-props="tableFooter"
@@ -61,17 +60,17 @@ export default Vue.extend({
           text: 'First name',
           value: 'firstName',
         },
-        { text: 'Last name', value: 'lastName' },
-        { text: 'Position', value: 'position' },
-        { text: 'Province', value: 'province' },
-        { text: 'Gender', value: 'gender' },
-        { text: 'Phone', value: 'phone' },
-        { text: 'action', value: 'action' },
+        { text: 'Last name', value: 'lastName', sortable: false },
+        { text: 'Position', value: 'position', sortable: false },
+        { text: 'Province', value: 'province', sortable: false },
+        { text: 'Gender', value: 'gender', sortable: false },
+        { text: 'Phone', value: 'phone', sortable: false },
+        { text: 'action', value: 'action', sortable: false },
       ],
       limit: 20,
       page: 1,
       options: {
-        mustSort: true,
+        mustSort: false,
       },
       id: null,
     }
@@ -121,7 +120,8 @@ export default Vue.extend({
       })
       return this.$router.push(localePath)
     },
-    editItem({ id }) {
+    editItem(data: ObjectType) {
+      const { id } = data
       const localePath = this.localePath({
         name: `employee-id`,
         params: { id },

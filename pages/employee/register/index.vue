@@ -2,7 +2,7 @@
   <v-sheet>
     <page-employee
       v-model="employeeForm"
-      title="Register new customer"
+      title="Register new employee"
       action-text="submit"
       cancel-text="Cancel"
       @cancel="cancel"
