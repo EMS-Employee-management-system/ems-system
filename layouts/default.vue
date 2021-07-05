@@ -48,6 +48,7 @@
     <v-footer :absolute="!fixed" app>
       <span>&copy; {{ new Date().getFullYear() }}</span>
     </v-footer>
+    <notifications position="center" />
   </v-app>
 </template>
 

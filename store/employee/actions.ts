@@ -1,5 +1,6 @@
 import type { Store } from 'vuex'
 import { EmployeeProxy } from '~/proxies/EmployeeProxy'
+import { notifyException } from '~/utils/notify'
 import { ObjectType } from '~/utils/objects'
 import { ALL, DETAIL } from '~/utils/vuex/mutation-types'
 const options = { root: true }
@@ -35,7 +36,8 @@ const register = async (
       name: 'employee',
     })
     return window.$nuxt.$router.push(path)
-  } catch (error) {
+  } catch (e) {
+    notifyException(e)
   } finally {
     await dispatch('waiting/end', 'employee:register', options)
   }
@@ -54,6 +56,7 @@ const update = async (
     })
     return window.$nuxt.$router.push(path)
   } catch (error) {
+    notifyException(error)
   } finally {
     await dispatch('waiting/end', 'employee:update', options)
   }

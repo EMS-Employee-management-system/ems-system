@@ -1,5 +1,6 @@
 import type { Store } from 'vuex'
 import { DepartmentProxy } from '~/proxies/DepartmentProxy'
+import { notifyException } from '~/utils/notify'
 import { ObjectType } from '~/utils/objects'
 import { ALL, DETAIL } from '~/utils/vuex/mutation-types'
 const options = { root: true }
@@ -36,6 +37,7 @@ const register = async (
     })
     return window.$nuxt.$router.push(path)
   } catch (error) {
+    notifyException(error)
   } finally {
     await dispatch('waiting/end', 'department:register', options)
   }

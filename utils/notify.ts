@@ -28,7 +28,6 @@ export function notifyException(
   fallbackTextLangPath?: string,
 ): void {
   const { response = null, message } = error || {}
-
   let text: string | Object
 
   if (fallbackTextLangPath) {
@@ -39,7 +38,7 @@ export function notifyException(
         ? response.data.message
         : message
       : message
-
+    console.info(text)
     if (isObject(text)) {
       text = Object.values(text).pop()
     }
