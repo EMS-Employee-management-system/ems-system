@@ -1,35 +1,33 @@
 <template>
-  <v-sheet>
+  <v-sheet class="elevation-2">
     <div class="pa-3 display-1">
       Department list
-      <v-btn class="float-right mr-1" @click="addNewDepartment">Add new</v-btn>
+      <v-btn class="float-right mr-1" color="primary" @click="addNewEmployee">
+        <v-icon left> mdi-plus </v-icon>add new
+      </v-btn>
     </div>
-    <v-card-text>
-      <v-data-table
-        :headers="headers"
-        :items="department"
-        :server-items-length="pagination.total"
-        class="elevation-6 rounded-0"
-        :sort-desc="[false, true]"
-        multi-sort
-        height="calc(100vh - 280px)"
-        fixed-header
-        :footer-props="tableFooter"
-        disable-pagination
-        :page="page"
-        :options.sync="options"
-        :items-per-page="limit"
-      >
-        <template #[`item.action`]="{ item }">
-          <v-icon small class="mr-2" @click="editItem(item)">
-            mdi-pencil
-          </v-icon>
-          <v-icon color="red" small @click="deleteItem(item)">
-            mdi-delete
-          </v-icon>
-        </template>
-      </v-data-table>
-    </v-card-text>
+    <v-data-table
+      :headers="headers"
+      :items="department"
+      :server-items-length="pagination.total"
+      class="elevation-6 rounded-0"
+      :sort-desc="[false, true]"
+      multi-sort
+      height="calc(100vh - 250px)"
+      fixed-header
+      :footer-props="tableFooter"
+      disable-pagination
+      :page="page"
+      :options.sync="options"
+      :items-per-page="limit"
+    >
+      <template #[`item.action`]="{ item }">
+        <v-icon small class="mr-2" @click="editItem(item)"> mdi-pencil </v-icon>
+        <v-icon color="red" small @click="deleteItem(item)">
+          mdi-delete
+        </v-icon>
+      </template>
+    </v-data-table>
     <common-dialog
       :dialog.sync="dialog"
       title="Delete department"

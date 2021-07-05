@@ -1,35 +1,31 @@
 <template>
-  <v-sheet>
+  <v-sheet class="elevation-2">
     <div class="pa-3 display-1">User list</div>
-    <v-card-text>
-      <v-data-table
-        :headers="headers"
-        :items="users"
-        :server-items-length="pagination.total"
-        class="elevation-6 rounded-0"
-        :sort-desc="[false, true]"
-        height="calc(100vh - 280px)"
-        fixed-header
-        :footer-props="tableFooter"
-        disable-pagination
-        :page="page"
-        :options.sync="options"
-        :items-per-page="limit"
-      >
-        <template #[`item.username`]="{ item }">
-          <v-chip
-            :color="item.username === $auth.user.username ? 'primary' : ''"
-          >
-            {{ item.username }}
-          </v-chip>
-        </template>
-        <template v-if="isAdmin()" #[`item.action`]="{ item }">
-          <v-icon color="red" small @click="deleteItem(item)">
-            {{ item.username === $auth.user.username ? '' : 'mdi-delete' }}
-          </v-icon>
-        </template>
-      </v-data-table>
-    </v-card-text>
+    <v-data-table
+      :headers="headers"
+      :items="users"
+      :server-items-length="pagination.total"
+      class="elevation-6 rounded-0"
+      :sort-desc="[false, true]"
+      height="calc(100vh - 250px)"
+      fixed-header
+      :footer-props="tableFooter"
+      disable-pagination
+      :page="page"
+      :options.sync="options"
+      :items-per-page="limit"
+    >
+      <template #[`item.username`]="{ item }">
+        <v-chip :color="item.username === $auth.user.username ? 'primary' : ''">
+          {{ item.username }}
+        </v-chip>
+      </template>
+      <template v-if="isAdmin()" #[`item.action`]="{ item }">
+        <v-icon color="red" small @click="deleteItem(item)">
+          {{ item.username === $auth.user.username ? '' : 'mdi-delete' }}
+        </v-icon>
+      </template>
+    </v-data-table>
     <common-dialog
       :dialog.sync="dialog"
       title="Delete employee"
