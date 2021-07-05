@@ -17,6 +17,7 @@
         <div class="caption mt-4">Copyright All Rights Reserved.</div>
       </div>
     </div>
+    <notifications position="center" />
   </v-app>
 </template>
 <script>
