@@ -2,6 +2,7 @@ import type { Store } from 'vuex'
 import { ObjectType } from '~/utils/objects'
 import { AuthProxy } from '~/proxies/AuthProxy'
 import { ALL } from '~/utils/vuex/mutation-types'
+import { notifyException } from '~/utils/notify'
 const proxy = new AuthProxy()
 const options = { root: true }
 
@@ -36,7 +37,7 @@ const signup = async (
     })
     return window.$nuxt.$router.push(path)
   } catch (e) {
-    console.info(e)
+    notifyException(e)
   } finally {
     await dispatch('waiting/end', 'user:signup', options)
   }

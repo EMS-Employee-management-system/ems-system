@@ -20,7 +20,7 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
   css: ['~/assets/scss/theme.scss'],
-  plugins: [{ src: '~/plugins/axios' }],
+  plugins: [{ src: '~/plugins/axios' }, { src: '~/plugins/notification' }],
   components: true,
   buildModules: [
     '@nuxt/typescript-build',
