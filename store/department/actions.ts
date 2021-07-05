@@ -19,7 +19,7 @@ const all = async ({ commit, dispatch }: Store<any>, param: any) => {
     }
     commit(ALL, items)
   } catch (e) {
-    console.info(e)
+    notifyException(e)
   } finally {
     await dispatch('waiting/end', 'department:fetch', options)
   }
@@ -56,6 +56,7 @@ const update = async (
     })
     return window.$nuxt.$router.push(path)
   } catch (error) {
+    notifyException(error)
   } finally {
     await dispatch('waiting/end', 'department:update', options)
   }
@@ -66,7 +67,7 @@ const detail = async ({ commit }: Store<any>, id: number) => {
     const data = await proxy.removeParameters().find(id)
     commit(DETAIL, data)
   } catch (e) {
-    console.info(e)
+    notifyException(e)
   }
 }
 
@@ -75,7 +76,7 @@ const deleteDepartment = async ({ dispatch }: Store<any>, id: number) => {
   try {
     await proxy.removeParameters().delete(id)
   } catch (e) {
-    console.info(e)
+    notifyException(e)
   } finally {
     await dispatch('waiting/end', 'department:update', options)
   }

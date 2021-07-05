@@ -20,7 +20,7 @@ const all = async ({ commit, dispatch }: Store<any>, param: any) => {
     }
     commit(ALL, items)
   } catch (e) {
-    console.info(e)
+    notifyException(e)
   } finally {
     await dispatch('waiting/end', 'users:fetch', options)
   }
@@ -47,7 +47,7 @@ const deleteUser = async ({ dispatch }: Store<any>, id: number) => {
   try {
     await proxy.removeParameters().deleteOne(id)
   } catch (e) {
-    console.info(e)
+    notifyException(e)
   } finally {
     await dispatch('waiting/end', 'user:delete', options)
   }

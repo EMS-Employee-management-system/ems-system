@@ -19,7 +19,7 @@ const all = async ({ commit, dispatch }: Store<any>, param: any) => {
     }
     commit(ALL, items)
   } catch (e) {
-    console.info(e)
+    notifyException(e)
   } finally {
     await dispatch('waiting/end', 'customer:fetch', options)
   }
@@ -67,7 +67,7 @@ const detail = async ({ commit }: Store<any>, id: number) => {
     const data = await proxy.removeParameters().find(id)
     commit(DETAIL, data)
   } catch (e) {
-    console.info(e)
+    notifyException(e)
   }
 }
 
