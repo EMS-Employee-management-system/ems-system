@@ -5,6 +5,7 @@
       title="Update department"
       action-text="update"
       cancel-text="Cancel"
+      :loading="loading"
       @cancel="cancel"
       @submit="update"
     />
@@ -25,6 +26,9 @@ export default Vue.extend({
   computed: {
     departmentDetail(this: any) {
       return this.$store.getters['department/detail']
+    },
+    loading(this: any) {
+      return this.$waiting.is('department:update')
     },
   },
   async mounted(this: any) {

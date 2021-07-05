@@ -5,6 +5,7 @@
       title="Register new department"
       action-text="submit"
       cancel-text="Cancel"
+      :loading="loading"
       @cancel="cancel"
       @submit="register"
     />
@@ -20,6 +21,11 @@ export default Vue.extend({
     return {
       departmentForm: {},
     }
+  },
+  computed: {
+    loading(this: any) {
+      return this.$waiting.is('department:register')
+    },
   },
   methods: {
     cancel(this: any) {

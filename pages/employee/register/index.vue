@@ -5,6 +5,7 @@
       title="Register new employee"
       action-text="submit"
       cancel-text="Cancel"
+      :loading="loading"
       @cancel="cancel"
       @submit="register"
     />
@@ -20,6 +21,11 @@ export default Vue.extend({
     return {
       employeeForm: {},
     }
+  },
+  computed: {
+    loading(this: any) {
+      return this.$waiting.is('employee:register')
+    },
   },
   methods: {
     cancel(this: any) {

@@ -5,6 +5,7 @@
       title="Update employee"
       action-text="update"
       cancel-text="Cancel"
+      :loading="loading"
       @cancel="cancel"
       @submit="update"
     />
@@ -25,6 +26,9 @@ export default Vue.extend({
   computed: {
     employeeDetail(this: any) {
       return this.$store.getters['employee/detail']
+    },
+    loading(this: any) {
+      return this.$waiting.is('employee:update')
     },
   },
   async mounted(this: any) {
