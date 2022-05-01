@@ -82,6 +82,11 @@ export default Vue.extend({
           title: 'Department',
           to: '/department',
         },
+        {
+          icon: 'mdi-domain',
+          title: 'Sector',
+          to: '/sector',
+        },
       ],
       miniVariant: false,
       right: true,
