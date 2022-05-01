@@ -5,7 +5,6 @@
         ><v-icon @click="cancel">mdi-arrow-left</v-icon
         >{{ title }}</v-card-title
       >
-      {{ department }}
       <v-divider />
       <v-card-text>
         <v-text-field
