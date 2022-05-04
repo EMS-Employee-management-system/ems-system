@@ -74,7 +74,7 @@ export default Vue.extend({
         },
         {
           icon: 'mdi-account-multiple',
-          title: 'Employee',
+          title: 'Staff',
           to: '/employee',
         },
         {
