@@ -33,6 +33,7 @@
           @click:append="hidePassword = !hidePassword"
         />
         <v-btn
+          id="addbutton"
           color="primary"
           large
           block

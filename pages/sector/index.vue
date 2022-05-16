@@ -1,7 +1,7 @@
 <template>
   <v-sheet class="elevation-2">
     <div class="pa-3 display-1">
-      Employee list
+      Sector list
       <v-btn class="float-right mr-1" color="primary" @click="addNewEmployee">
         <v-icon left> mdi-plus </v-icon>add new
       </v-btn>
@@ -29,14 +29,14 @@
     </v-data-table>
     <common-dialog
       :dialog.sync="dialog"
-      title="Delete employee"
+      title="Delete sector"
       :dialog-props="{ width: 500 }"
       cancel-text="Cancel"
       action-text="Delete"
       @commit="handleDelete"
     >
       <v-card-text>
-        <span>Are you sure want to delete employee?</span>
+        <span>Are you sure want to delete sector?</span>
       </v-card-text>
     </common-dialog>
   </v-sheet>

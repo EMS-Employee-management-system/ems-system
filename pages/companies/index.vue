@@ -1,6 +1,6 @@
 <template>
   <v-sheet class="elevation-2">
-    <div class="pa-3 display-1">User list</div>
+    <div class="pa-3 display-1">Comapny List</div>
     <v-data-table
       :headers="headers"
       :items="users"
@@ -76,12 +76,12 @@ export default Vue.extend({
           sortable: false,
         },
         {
-          text: 'Username',
+          text: 'Onwer Name',
           value: 'username',
           sortable: false,
         },
-        { text: 'Employee', value: 'email', sortable: false },
-        { text: 'Roles', value: 'roles[0].name', sortable: false },
+        { text: 'Company email', value: 'email', sortable: false },
+        // { text: 'Roles', value: 'roles[0].name', sortable: false },
         { text: this.displayAction(), value: 'action', sortable: false },
       ]
     },

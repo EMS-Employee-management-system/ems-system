@@ -2,7 +2,7 @@
   <v-sheet>
     <page-sector
       v-model="sector"
-      title="Update employee"
+      title="Update sector"
       action-text="update"
       cancel-text="Cancel"
       :loading="loading"
