@@ -25,6 +25,7 @@
           @click:append="hidePassword = !hidePassword"
         ></v-text-field>
         <v-btn
+          id="submit"
           color="primary"
           large
           block

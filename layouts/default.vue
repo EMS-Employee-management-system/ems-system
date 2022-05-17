@@ -38,7 +38,7 @@
       </v-btn>
       <v-toolbar-title v-text="title" />
       <v-spacer />
-      <v-btn color="warning" @click="logout"> LOGOUT </v-btn>
+      <v-btn id="logout" color="warning" @click="logout"> LOGOUT </v-btn>
     </v-app-bar>
     <v-main>
       <v-container>
