@@ -125,7 +125,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="Q_sfs65dCnuoHFZiNzVt-64" value="Check Approval list" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="560" y="1300" width="80" height="80" as="geometry" />
+          <mxGeometry x="550" y="1300" width="80" height="80" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
